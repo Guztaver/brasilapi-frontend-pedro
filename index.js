@@ -1,6 +1,11 @@
 $('#ddd-field').on('input', function() {
   if ($(this).val().length > 2) {
-    alert('DDD não pode ser maior que 2 dígitos!');
+    Swal.fire({
+	    title: 'Erro!',
+	    text: 'DDD não pode ser maior que 2 dígitos!',
+	    icon: 'error',
+	    confirmButtonText: 'Ok',
+    })
   }
 });
 
@@ -30,9 +35,19 @@ $('#ddd-query').on('submit', async function(event) {
     console.error("Error:", error);
 
     if (error.message.includes('404')) {
-      alert("O DDD não existe");
+      Swal.fire({
+        title: 'Erro!',
+        text: 'O DDD não existe',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     } else {
-      alert("A consulta falhou. Verifique o DDD digitado.");
+      Swal.fire({
+        title: 'Erro!',
+        text: 'A consulta falhou. Verifique o DDD digitado.',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+      });
     }
   }
 });
